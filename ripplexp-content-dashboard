@@ -1,0 +1,103 @@
+import streamlit as st
+import pandas as pd
+
+# Page configuration
+st.set_page_config(page_title="RippleXp Content Dashboard", layout="wide")
+
+# Home Page
+st.title("📊 RippleXp Content Management Dashboard")
+st.subheader("Track and manage your freemium and premium content ideas efficiently.")
+
+# Sidebar for Navigation
+st.sidebar.title("Navigation")
+section = st.sidebar.radio("Go to:", ["Home", "Content Ideas", "SEO Strategy", "Notes & To-Do", "Links & Resources"])
+
+# Home Section
+if section == "Home":
+    st.write("Welcome to your content management dashboard! Use the sidebar to navigate between different sections.")
+
+# Content Ideas Section
+if section == "Content Ideas":
+    st.header("📝 Content Ideas")
+
+    # Freemium Content Table
+    st.subheader("Freemium Content")
+    freemium_data = {
+        "Title": [
+            "Beginner’s Guide to Influencer Marketing", 
+            "Checklist for Influencer Selection", 
+            "Top 10 Red Flags to Avoid"
+        ],
+        "Description": [
+            "Introductory guide on influencer marketing for tourism campaigns.",
+            "Step-by-step checklist for selecting influencers safely.",
+            "Common mistakes to avoid in influencer partnerships."
+        ],
+        "SEO Keywords": [
+            "influencer marketing risks", 
+            "influencer selection checklist", 
+            "influencer red flags"
+        ],
+        "Status": ["To Do", "In Progress", "Complete"]
+    }
+    freemium_df = pd.DataFrame(freemium_data)
+    st.dataframe(freemium_df)
+
+    # Premium Content Table
+    st.subheader("Premium Content")
+    premium_data = {
+        "Title": [
+            "Masterclass on Risk Management", 
+            "Influencer Vetting Toolkit", 
+            "1:1 Consultation on Risk Management"
+        ],
+        "Description": [
+            "In-depth training on managing influencer risks for tourism.",
+            "Comprehensive tools for vetting influencers effectively.",
+            "Personalized advice on creating a risk management strategy."
+        ],
+        "SEO Keywords": [
+            "influencer marketing masterclass", 
+            "vetting influencers", 
+            "risk management consultation"
+        ],
+        "Status": ["To Do", "To Do", "Complete"]
+    }
+    premium_df = pd.DataFrame(premium_data)
+    st.dataframe(premium_df)
+
+# SEO Strategy Section
+if section == "SEO Strategy":
+    st.header("🔍 SEO Strategy")
+    st.write("Manage your SEO keywords and optimization strategies here.")
+    
+    # Example table for SEO management
+    seo_data = {
+        "Content Title": [
+            "Beginner’s Guide to Influencer Marketing", 
+            "Checklist for Influencer Selection"
+        ],
+        "Primary Keyword": [
+            "influencer marketing risks", 
+            "influencer selection checklist"
+        ],
+        "Secondary Keywords": [
+            "how to manage influencer risk", 
+            "choose the right influencer"
+        ]
+    }
+    seo_df = pd.DataFrame(seo_data)
+    st.dataframe(seo_df)
+
+# Notes & To-Do Section
+if section == "Notes & To-Do":
+    st.header("🗒️ Notes & To-Do List")
+    st.text_area("Write down your notes or ideas here:", height=200)
+    st.write("Add reminders or next steps:")
+
+# Links & Resources Section
+if section == "Links & Resources":
+    st.header("🔗 Links & Resources")
+    st.write("Quick access to important resources:")
+    st.markdown("[Google Sheets](https://docs.google.com/spreadsheets/)")
+    st.markdown("[RippleXp Website](https://ripplexn.com)")
